@@ -1,0 +1,45 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.prime.com.tr/ui">
+	<p:dialog header="Course Detail" widgetVar="editorDialog" width="400">
+		<h:form id="editor">
+			<h:panelGrid columns="3" cellpadding="4">
+				<h:outputText id="title" value="Tittle:" />
+				<h:inputText value="#{catalog.editedCourse.tittle}" />
+				<p:message for="title"/>
+				<h:outputText value="Professor:" />
+				<h:selectOneMenu id="selectProfessor"
+					value="#{catalog.editedCourse.professor}"
+					converter="#{professorCombo}">
+					<f:selectItem itemValue="#{null}" itemLabel="None" />
+					<f:selectItems value="#{professorCombo.list}" var="p"
+						itemValue="#{p}" itemLabel="#{p.name}" />
+				</h:selectOneMenu>
+				<p:message for="selectProfessor"/>
+				<h:outputText value="Level:" />
+				<h:selectOneMenu id="selectLevel"
+					value="#{catalog.editedCourse.level}">
+					<f:selectItems value="#{levelCombo.list}" />
+				</h:selectOneMenu>
+				<p:message for="selectLevel"/>
+				<h:outputText value="Is active:" id="isActive"/>
+				<h:selectBooleanCheckbox value="#{catalog.editedCourse.active}" />
+				<p:message for="isActive"/>
+				<h:outputText value="Hours:" id="hours"/>
+				<p:spinner value="#{catalog.editedCourse.hours}" />
+				<p:message for="hours"/>
+				<p:fileUpload fileUploadListener="#{catalog.handleFileUpload}" label="Upload contents"
+					update="fileName" auto="true" allowTypes="*.pdf;"
+					description="Pdf files" />
+				<h:commandLink id="fileName" value="#{catalog.editedCourse.contents.fileName}">
+					<p:fileDownload value="#{catalog.streamedContents}" />
+				</h:commandLink>
+				<p:message for="fileName"/>
+				<h:commandButton action="#{catalog.save}" value="Save"
+					update="list" />
+			</h:panelGrid>
+		</h:form>
+	</p:dialog>
+</ui:composition>

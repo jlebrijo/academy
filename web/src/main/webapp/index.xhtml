@@ -1,0 +1,16 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.prime.com.tr/ui"
+	template="/resources/template.xhtml">
+	<ui:define name="cabecera">Inicio</ui:define>
+	<ui:define name="content">
+		<div style="margin: 40px;">
+			<h1>SPIKE: Hibernate/JPA2/Spring3/JSF2/Primefaces</h1>
+			<p>Specs: An academy offers its course catalog on internet</p>
+			<ui:include src="list.xhtml" />
+			<ui:include src="editor.xhtml" />
+		</div>
+	</ui:define>
+</ui:composition>

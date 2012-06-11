@@ -1,0 +1,74 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.prime.com.tr/ui">
+
+	<h:form id="menu">
+
+		<p:growl id="messages" />
+
+		<p:menubar autoSubmenuDisplay="true">
+			<p:menuitem value="Home" url="/" icon="ui-icon ui-icon-home" />
+
+			<p:submenu label="File" icon="ui-icon ui-icon-document">
+				<p:submenu label="Open" icon="ui-icon ui-icon-contact">
+					<p:menuitem value="Open All"
+						url="#" />
+					<p:menuitem value="Import"
+						url="#" />
+				</p:submenu>
+				<p:menuitem value="Close"
+					url="#" />
+			</p:submenu>
+
+			<p:submenu label="Edit" icon="ui-icon ui-icon-document">
+				<p:submenu label="Perspective" icon="ui-icon ui-icon-document">
+					<p:menuitem value="Java Edition"
+						url="#" />
+				</p:submenu>
+				<p:submenu label="View" icon="ui-icon ui-icon-document">
+					<p:menuitem value="JavaDoc"
+						url="#" />
+					<p:menuitem value="Navigator"
+						url="#" />
+				</p:submenu>
+				<p:menuitem value="New Window"
+					url="#" />
+				<p:menuitem value="New Editor"
+					url="#" />
+			</p:submenu>
+
+			<p:submenu label="Software" icon="ui-icon ui-icon-document">
+				<p:submenu label="Source" icon="ui-icon ui-icon-document">
+					<p:submenu label="Refactor">
+						<p:menuitem value="Extract Method"
+							url="#" />
+						<p:menuitem value="Extract constant"
+							url="#" />
+						<p:menuitem value="Extract field"
+							url="#" />
+						<p:menuitem value="Create accessors"
+							url="#" />
+						<p:menuitem value="Format"
+							url="#" />
+
+					</p:submenu>
+					<p:menuitem value="List All"
+						url="#" />
+					<p:menuitem value="Formu" url="#" />
+				</p:submenu>
+			</p:submenu>
+			<p:submenu label="Admin" icon="ui-icon ui-icon-document">
+				<p:menuitem value="Jobs" url="#" />
+			</p:submenu>
+			<p:menuitem value="Help"
+				url="#" />
+
+			<p:menuitem id="loginIdentificarse" value="Login"
+				onclick="login.show();" icon="ui-icon ui-icon-help"
+				rendered="#{empty request.userPrincipal.name}" />
+
+		</p:menubar>
+	</h:form>
+</ui:composition>

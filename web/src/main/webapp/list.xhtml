@@ -1,0 +1,45 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.prime.com.tr/ui">
+	<h:form id="list">
+		<p:commandButton value="New Course" update="editor" immediate="true"
+			onclick="editorDialog.show()" actionListener="#{catalog.newCourse}" />
+		<p:dataTable var="course" value="#{catalog.courses}" paginator="true"
+			rows="10" selection="#{catalog.editedCourse}" selectionMode="single"
+			onRowSelectUpdate="editor" onRowSelectComplete="editorDialog.show()">
+			<p:column sortBy="#{course.tittle}">
+				<f:facet name="header">
+					<h:outputText value="Title" />
+				</f:facet>
+				<h:outputText value="#{course.tittle}" />
+			</p:column>
+			<p:column>
+				<f:facet name="header">
+					<h:outputText value="Professor" />
+				</f:facet>
+				<h:outputText value="#{course.professor.name}" />
+			</p:column>
+			<p:column>
+				<f:facet name="header">
+					<h:outputText value="Hours" />
+				</f:facet>
+				<h:outputText value="#{course.hours}" />
+			</p:column>
+			<p:column>
+				<f:facet name="header">
+					<h:outputText value="Level" />
+				</f:facet>
+				<h:outputText value="#{course.level}" />
+			</p:column>
+			<p:column style="width:32px">
+				<p:commandButton update="list" action="#{catalog.delete}"
+					image="ui-icon ui-icon-close">
+					<f:setPropertyActionListener value="#{course}"
+						target="#{catalog.editedCourse}" />
+				</p:commandButton>
+			</p:column>
+		</p:dataTable>
+	</h:form>
+</ui:composition>
