@@ -8,8 +8,8 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
-	<name>academy</name>
-	<url>http://maven.apache.org</url>
+	<name>Academy</name>
+	<url>http://labs.lebrijo.com:8080/academy</url>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
